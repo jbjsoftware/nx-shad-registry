@@ -31,15 +31,7 @@ RUN pnpm exec nx build docs
 FROM node:22-alpine AS runner
 WORKDIR /app
 
-# Install pnpm for runtime
-RUN npm install -g pnpm
-
-# Copy package.json and install only production dependencies
-COPY --from=docs-builder /app/package.json ./
-COPY --from=docs-builder /app/pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
-
-# Copy the built application
+# Copy the built application (includes all dependencies)
 COPY --from=docs-builder /app/apps/docs/.next/standalone ./
 COPY --from=docs-builder /app/apps/docs/.next/static ./apps/docs/.next/static
 COPY --from=docs-builder /app/apps/docs/public ./apps/docs/public
