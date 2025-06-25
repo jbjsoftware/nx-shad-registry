@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [    
+    {
+      "name": "input-control",
+      "type": "registry:component",
+      "title": "Input Control",
+      "description": "A form input control.",
+      "registryDependencies": ["input", "label", "form"],
+      "files": [
+        {
+          "path": "registry/new-york/components/form-controls/input-control.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "number-input-control",
+      "type": "registry:component",
+      "title": "Number Input Control",
+      "description": "A form number input control.",
+      "registryDependencies": ["input", "label", "form"],
+      "files": [
+        {
+          "path": "registry/new-york/components/form-controls/number-input-control.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
