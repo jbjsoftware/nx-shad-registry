@@ -1,4 +1,10 @@
-import { Input } from '@/registry/new-york/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/registry/new-york/components/ui/select';
 import {
   FormControl,
   FormDescription,
@@ -9,7 +15,12 @@ import {
 } from '@/registry/new-york/components/ui/form';
 import { useFormContext, FieldPath, FieldValues } from 'react-hook-form';
 
-interface InputControlProps<
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+interface SelectControlProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > {
@@ -19,10 +30,10 @@ interface InputControlProps<
   required?: boolean;
   disabled?: boolean;
   placeholder?: string;
-  type?: string;
+  options: SelectOption[];
 }
 
-export function InputControl<
+export function SelectControl<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
@@ -32,8 +43,8 @@ export function InputControl<
   required = false,
   disabled = false,
   placeholder,
-  type = 'text',
-}: InputControlProps<TFieldValues, TName>) {
+  options,
+}: SelectControlProps<TFieldValues, TName>) {
   const { control, formState } = useFormContext<TFieldValues>();
   const hasError = !!formState.errors[name];
 
@@ -50,14 +61,27 @@ export function InputControl<
               {required && <span className="ml-1">*</span>}
             </FormLabel>
           )}
-          <FormControl>
-            <Input
-              type={type}
-              placeholder={placeholder}
-              disabled={disabled}
-              {...field}
-            />
-          </FormControl>
+
+          <Select
+            disabled={disabled}
+            onValueChange={field.onChange}
+            value={field.value}
+            defaultValue={field.value}
+          >
+            <FormControl>
+              <SelectTrigger>
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              {options.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
         </FormItem>

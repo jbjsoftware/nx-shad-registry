@@ -68,6 +68,16 @@
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps"
       }
+    },
+    {
+      "plugin": "@nx/rspack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
   ],
   "generators": {
@@ -79,7 +89,18 @@
     },
     "@nx/react": {
       "library": {
+        "style": "scss",
+        "linter": "eslint",
         "unitTestRunner": "vitest"
+      },
+      "application": {
+        "babel": true,
+        "style": "scss",
+        "linter": "eslint",
+        "bundler": "rspack"
+      },
+      "component": {
+        "style": "scss"
       }
     }
   }

@@ -5,9 +5,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
+} from '@/registry/new-york/components/ui/form';
 import { useFormContext, FieldPath, FieldValues } from 'react-hook-form';
-import { Input } from '../ui/input';
+import { Input } from '@/registry/new-york/components/ui/input';
 
 interface NumberInputControlProps<
   TFieldValues extends FieldValues = FieldValues,

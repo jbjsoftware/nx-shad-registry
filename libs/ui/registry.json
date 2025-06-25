@@ -11,7 +11,7 @@
       "registryDependencies": ["input", "label", "form"],
       "files": [
         {
-          "path": "registry/new-york/components/form-controls/input-control.tsx",
+          "path": "src/registry/new-york/components/form-controls/input-control.tsx",
           "type": "registry:component"
         }
       ]
@@ -24,7 +24,20 @@
       "registryDependencies": ["input", "label", "form"],
       "files": [
         {
-          "path": "registry/new-york/components/form-controls/number-input-control.tsx",
+          "path": "src/registry/new-york/components/form-controls/number-input-control.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "select-control",
+      "type": "registry:component",
+      "title": "Select Control",
+      "description": "A form select control.",
+      "registryDependencies": ["select", "label", "form"],
+      "files": [
+        {
+          "path": "src/registry/new-york/components/form-controls/select-control.tsx",
           "type": "registry:component"
         }
       ]

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-input-control",
+  "type": "registry:component",
+  "title": "Number Input Control",
+  "description": "A form number input control.",
+  "registryDependencies": [
+    "input",
+    "label",
+    "form"
+  ],
+  "files": [
+    {
+      "path": "src/registry/new-york/components/form-controls/number-input-control.tsx",
+      "content": "import {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from '@/registry/new-york/components/ui/form';\nimport { useFormContext, FieldPath, FieldValues } from 'react-hook-form';\nimport { Input } from '@/registry/new-york/components/ui/input';\n\ninterface NumberInputControlProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> {\n  name: TName;\n  label?: string;\n  description?: string;\n  required?: boolean;\n  disabled?: boolean;\n  placeholder?: string;\n  min?: number;\n  max?: number;\n  step?: number;\n}\n\nexport function NumberInputControl<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  name,\n  label,\n  description,\n  required = false,\n  disabled = false,\n  placeholder,\n  min,\n  max,\n  step = 1,\n}: NumberInputControlProps<TFieldValues, TName>) {\n  const { control, formState } = useFormContext<TFieldValues>();\n  const hasError = !!formState.errors[name];\n\n  return (\n    <FormField\n      control={control}\n      name={name}\n      disabled={disabled}\n      render={({ field }) => (\n        <FormItem>\n          {label && (\n            <FormLabel className={hasError ? 'text-destructive' : ''}>\n              {label}\n              {required && <span className=\"ml-1\">*</span>}\n            </FormLabel>\n          )}\n          <FormControl>\n            <Input\n              type=\"number\"\n              placeholder={placeholder}\n              disabled={disabled}\n              min={min}\n              max={max}\n              step={step}\n              onChange={(e) => {\n                field.onChange(e.target.valueAsNumber);\n              }}\n              value={field.value ?? ''}\n              onBlur={field.onBlur}\n              name={field.name}\n              ref={field.ref}\n            />\n          </FormControl>\n          {description && <FormDescription>{description}</FormDescription>}\n          <FormMessage />\n        </FormItem>\n      )}\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
