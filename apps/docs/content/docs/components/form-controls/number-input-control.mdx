@@ -1,0 +1,155 @@
+---
+title: Number Input Control
+description: A controlled number input field component with validation, min/max constraints, and step control
+---
+
+# Number Input Control
+
+The `NumberInputControl` component provides a specialized input field for numeric values with built-in validation, range constraints, and step controls. It's designed to work seamlessly with React Hook Form.
+
+## Features
+
+- **Numeric Validation**: Automatically handles number parsing and validation
+- **Range Constraints**: Support for minimum and maximum values
+- **Step Control**: Configurable step increments for input controls
+- **Form Integration**: Works with React Hook Form's `useFormContext`
+- **Error Handling**: Built-in validation states and error messages
+- **Accessibility**: Proper ARIA attributes and keyboard navigation
+
+## Usage
+
+```tsx
+import { NumberInputControl } from '@/registry/new-york/components/form-controls/number-input-control';
+import { useForm, FormProvider } from 'react-hook-form';
+
+function MyForm() {
+  const form = useForm();
+
+  return (
+    <FormProvider {...form}>
+      <form>
+        <NumberInputControl
+          name="age"
+          label="Age"
+          placeholder="Enter your age"
+          min={18}
+          max={120}
+          required
+        />
+
+        <NumberInputControl
+          name="price"
+          label="Price"
+          placeholder="Enter price"
+          min={0}
+          step={0.01}
+          description="Enter the price in dollars"
+        />
+      </form>
+    </FormProvider>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type      | Default | Description                           |
+| ------------- | --------- | ------- | ------------------------------------- |
+| `name`        | `string`  | -       | The name of the form field (required) |
+| `label`       | `string`  | -       | Label text for the input              |
+| `description` | `string`  | -       | Helper text displayed below the input |
+| `required`    | `boolean` | `false` | Whether the field is required         |
+| `disabled`    | `boolean` | `false` | Whether the input is disabled         |
+| `placeholder` | `string`  | -       | Placeholder text for the input        |
+| `min`         | `number`  | -       | Minimum allowed value                 |
+| `max`         | `number`  | -       | Maximum allowed value                 |
+| `step`        | `number`  | `1`     | Step increment for the input          |
+
+## Examples
+
+### Basic Number Input
+
+```tsx
+<NumberInputControl
+  name="quantity"
+  label="Quantity"
+  placeholder="Enter quantity"
+/>
+```
+
+### With Range Constraints
+
+```tsx
+<NumberInputControl
+  name="age"
+  label="Age"
+  placeholder="Enter your age"
+  min={18}
+  max={120}
+  required
+/>
+```
+
+### Decimal Numbers
+
+```tsx
+<NumberInputControl
+  name="price"
+  label="Price ($)"
+  placeholder="0.00"
+  min={0}
+  step={0.01}
+  description="Enter the price in dollars"
+/>
+```
+
+### Rating System
+
+```tsx
+<NumberInputControl
+  name="rating"
+  label="Rating"
+  placeholder="Rate from 1 to 5"
+  min={1}
+  max={5}
+  step={1}
+  description="Please rate your experience"
+/>
+```
+
+### Percentage Input
+
+```tsx
+<NumberInputControl
+  name="percentage"
+  label="Percentage (%)"
+  placeholder="Enter percentage"
+  min={0}
+  max={100}
+  step={0.1}
+  description="Enter a value between 0 and 100"
+/>
+```
+
+## Validation
+
+The component automatically:
+
+- Converts string input to numbers
+- Validates against min/max constraints
+- Handles decimal precision based on the step value
+- Displays validation errors from React Hook Form
+
+## Keyboard Navigation
+
+- **Arrow Up/Down**: Increment/decrement by step value
+- **Page Up/Down**: Increment/decrement by larger steps
+- **Home/End**: Jump to min/max values (if set)
+
+## Accessibility
+
+- Proper ARIA labels and descriptions
+- Error states are announced to screen readers
+- Support for keyboard navigation
+- Focus management
+- Semantic HTML with appropriate input type

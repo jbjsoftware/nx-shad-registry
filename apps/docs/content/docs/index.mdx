@@ -1,13 +1,201 @@
 ---
-title: Hello World
-description: Your first document
+title: Getting Started
+description: Learn how to install and use components from the Nx Shadcn Registry
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+# Getting Started
 
-## What is Next?
+Welcome to the **Nx Shadcn Registry**! This library provides a collection of reusable, accessible form control components built with React Hook Form integration and full TypeScript support.
+
+## Overview
+
+Our registry extends the popular Shadcn/ui component library with specialized form controls that handle validation, error states, and accessibility out of the box. Each component is designed to work seamlessly with React Hook Form and provides a consistent API for form handling.
+
+## Prerequisites
+
+Before using components from our registry, you need to have Shadcn/ui set up in your project.
+
+### 1. Install Shadcn/ui
+
+First, follow the [official Shadcn/ui installation guide](https://ui.shadcn.com/docs/installation) to set up Shadcn/ui in your project:
+
+```bash
+pnpm dlx shadcn@latest init
+```
+
+This will set up the necessary configuration files and dependencies.
+
+### 2. Install Required Dependencies
+
+Make sure you have React Hook Form installed, as our components depend on it:
+
+```bash
+pnpm add react-hook-form
+```
+
+## Adding Components
+
+Once you have Shadcn/ui configured, you can add components from our registry using the Shadcn CLI:
+
+### Basic Usage
+
+```bash
+pnpm dlx shadcn@latest add http://localhost:3000/r/input-control.json
+```
+
+### Available Components
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card
+    title="Input Control"
+    href="/docs/components/form-controls/input-control"
+  >
+    A controlled input field component with built-in validation and error
+    handling.
+  </Card>
+  <Card
+    title="Number Input Control"
+    href="/docs/components/form-controls/number-input-control"
+  >
+    Specialized numeric input with min/max constraints and step controls.
+  </Card>
+  <Card
+    title="Select Control"
+    href="/docs/components/form-controls/select-control"
+  >
+    Dropdown select component with customizable options and validation.
+  </Card>
+</Cards>
+
+#### Installation Commands
+
+```bash
+# Input Control
+pnpm dlx shadcn@latest add http://localhost:3000/r/input-control.json
+
+# Number Input Control
+pnpm dlx shadcn@latest add http://localhost:3000/r/number-input-control.json
+
+# Select Control
+pnpm dlx shadcn@latest add http://localhost:3000/r/select-control.json
+```
+
+## Quick Example
+
+Here's a simple example of how to use our form controls:
+
+```tsx
+import { useForm, FormProvider } from 'react-hook-form';
+import { InputControl } from '@/components/ui/input-control';
+import { NumberInputControl } from '@/components/ui/number-input-control';
+import { SelectControl } from '@/components/ui/select-control';
+
+interface FormData {
+  name: string;
+  age: number;
+  role: string;
+}
+
+export function MyForm() {
+  const form = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
+
+  const roleOptions = [
+    { value: 'admin', label: 'Administrator' },
+    { value: 'user', label: 'User' },
+    { value: 'guest', label: 'Guest' },
+  ];
+
+  return (
+    <FormProvider {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <InputControl
+          name="name"
+          label="Full Name"
+          placeholder="Enter your full name"
+          required
+        />
+
+        <NumberInputControl
+          name="age"
+          label="Age"
+          placeholder="Enter your age"
+          min={18}
+          max={120}
+          required
+        />
+
+        <SelectControl
+          name="role"
+          label="Role"
+          placeholder="Select your role"
+          options={roleOptions}
+          required
+        />
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </FormProvider>
+  );
+}
+```
+
+## Key Features
+
+- **🎯 Form Integration**: Built-in React Hook Form integration with automatic validation
+- **♿ Accessibility**: WCAG compliant with proper ARIA attributes and keyboard navigation
+- **🔧 TypeScript**: Full type safety and IntelliSense support
+- **🎨 Customizable**: Easily styled with Tailwind CSS and CSS variables
+- **📱 Responsive**: Mobile-friendly components that work on all screen sizes
+- **⚡ Performance**: Optimized components with minimal re-renders
+
+## Component Architecture
+
+All components in this registry follow a consistent pattern:
+
+1. **React Hook Form Integration**: Each component uses `useFormContext()` to access form state
+2. **Validation Support**: Automatic error handling and display
+3. **Accessibility**: Proper ARIA labels, descriptions, and keyboard navigation
+4. **TypeScript**: Full type safety with generic form value types
+5. **Consistent API**: Similar props and behavior across all components
+
+## Development Setup
+
+If you want to contribute or run this registry locally:
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd nx-shad-registry
+
+# Install dependencies
+pnpm install
+
+# Start the development server
+pnpm nx serve docs
+```
+
+## Next Steps
+
+<Cards>
+  <Card
+    title="Browse Components"
+    href="/docs/documents/form-controls/input-control"
+  >
+    Explore our form control components and their documentation
+  </Card>
+  <Card title="View Examples" href="/docs/test">
+    See real-world examples and usage patterns
+  </Card>
+  <Card
+    title="GitHub Repository"
+    href="https://github.com/your-username/nx-shad-registry"
+  >
+    View the source code and contribute to the project
+  </Card>
 </Cards>

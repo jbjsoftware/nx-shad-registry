@@ -1,0 +1,198 @@
+---
+title: Select Control
+description: A controlled select dropdown component with customizable options and form validation
+---
+
+# Select Control
+
+The `SelectControl` component provides a fully controlled dropdown select field with built-in form validation, error handling, and accessibility features. It's designed to work seamlessly with React Hook Form.
+
+## Features
+
+- **Form Integration**: Works with React Hook Form's `useFormContext`
+- **Validation**: Built-in error handling and validation states
+- **Customizable Options**: Flexible option configuration with labels and values
+- **Accessibility**: Proper ARIA attributes and keyboard navigation
+- **Required Fields**: Visual indicators for required fields
+- **Placeholder Support**: Customizable placeholder text
+
+## Usage
+
+```tsx
+import { SelectControl } from '@/registry/new-york/components/form-controls/select-control';
+import { useForm, FormProvider } from 'react-hook-form';
+
+function MyForm() {
+  const form = useForm();
+
+  const countryOptions = [
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' },
+    { value: 'uk', label: 'United Kingdom' },
+    { value: 'de', label: 'Germany' },
+  ];
+
+  return (
+    <FormProvider {...form}>
+      <form>
+        <SelectControl
+          name="country"
+          label="Country"
+          placeholder="Select your country"
+          options={countryOptions}
+          required
+        />
+
+        <SelectControl
+          name="priority"
+          label="Priority Level"
+          placeholder="Choose priority"
+          options={[
+            { value: 'low', label: 'Low' },
+            { value: 'medium', label: 'Medium' },
+            { value: 'high', label: 'High' },
+          ]}
+          description="Select the priority level for this task"
+        />
+      </form>
+    </FormProvider>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type             | Default | Description                                |
+| ------------- | ---------------- | ------- | ------------------------------------------ |
+| `name`        | `string`         | -       | The name of the form field (required)      |
+| `label`       | `string`         | -       | Label text for the select                  |
+| `description` | `string`         | -       | Helper text displayed below the select     |
+| `required`    | `boolean`        | `false` | Whether the field is required              |
+| `disabled`    | `boolean`        | `false` | Whether the select is disabled             |
+| `placeholder` | `string`         | -       | Placeholder text for the select            |
+| `options`     | `SelectOption[]` | -       | Array of options for the select (required) |
+
+### SelectOption Type
+
+```tsx
+interface SelectOption {
+  value: string;
+  label: string;
+}
+```
+
+## Examples
+
+### Basic Select
+
+```tsx
+const statusOptions = [
+  { value: 'active', label: 'Active' },
+  { value: 'inactive', label: 'Inactive' },
+  { value: 'pending', label: 'Pending' },
+];
+
+<SelectControl
+  name="status"
+  label="Status"
+  placeholder="Select status"
+  options={statusOptions}
+/>;
+```
+
+### Required Field
+
+```tsx
+const roleOptions = [
+  { value: 'admin', label: 'Administrator' },
+  { value: 'user', label: 'User' },
+  { value: 'guest', label: 'Guest' },
+];
+
+<SelectControl
+  name="role"
+  label="User Role"
+  placeholder="Select a role"
+  options={roleOptions}
+  required
+/>;
+```
+
+### With Description
+
+```tsx
+const priorityOptions = [
+  { value: 'low', label: 'Low Priority' },
+  { value: 'medium', label: 'Medium Priority' },
+  { value: 'high', label: 'High Priority' },
+  { value: 'urgent', label: 'Urgent' },
+];
+
+<SelectControl
+  name="priority"
+  label="Task Priority"
+  placeholder="Choose priority level"
+  options={priorityOptions}
+  description="Select the appropriate priority level for this task"
+/>;
+```
+
+### Category Selection
+
+```tsx
+const categoryOptions = [
+  { value: 'technology', label: 'Technology' },
+  { value: 'design', label: 'Design' },
+  { value: 'marketing', label: 'Marketing' },
+  { value: 'sales', label: 'Sales' },
+  { value: 'support', label: 'Support' },
+];
+
+<SelectControl
+  name="category"
+  label="Department"
+  placeholder="Select department"
+  options={categoryOptions}
+  required
+/>;
+```
+
+### Size Variants
+
+```tsx
+const sizeOptions = [
+  { value: 'xs', label: 'Extra Small' },
+  { value: 's', label: 'Small' },
+  { value: 'm', label: 'Medium' },
+  { value: 'l', label: 'Large' },
+  { value: 'xl', label: 'Extra Large' },
+];
+
+<SelectControl
+  name="size"
+  label="Size"
+  placeholder="Choose size"
+  options={sizeOptions}
+  description="Select the appropriate size"
+/>;
+```
+
+## Keyboard Navigation
+
+- **Space/Enter**: Open/close dropdown
+- **Arrow Up/Down**: Navigate through options
+- **Escape**: Close dropdown
+- **Type**: Search for options by typing
+
+## Accessibility
+
+- Proper ARIA labels and descriptions
+- Error states are announced to screen readers
+- Full keyboard navigation support
+- Focus management
+- Semantic HTML with appropriate select roles
+- Screen reader friendly option announcements
+
+## Styling
+
+The component inherits styling from the base `Select` component and applies error states automatically when validation fails. Error messages are displayed below the select field.

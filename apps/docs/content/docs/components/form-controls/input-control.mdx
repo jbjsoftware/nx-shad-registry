@@ -1,0 +1,150 @@
+---
+title: Input Control
+description: A controlled input field component with form validation and error handling
+---
+
+# Input Control
+
+The `InputControl` component provides a fully controlled input field with built-in form validation, error handling, and accessibility features. It's designed to work seamlessly with React Hook Form.
+
+## Features
+
+- **Form Integration**: Works with React Hook Form's `useFormContext`
+- **Validation**: Built-in error handling and validation states
+- **Accessibility**: Proper ARIA attributes and screen reader support
+- **Customizable**: Supports various input types and styling options
+- **Required Fields**: Visual indicators for required fields
+
+## Usage
+
+```tsx
+import { InputControl } from '@/registry/new-york/components/form-controls/input-control';
+import { useForm, FormProvider } from 'react-hook-form';
+
+function MyForm() {
+  const form = useForm();
+
+  return (
+    <FormProvider {...form}>
+      <form>
+        <InputControl
+          name="username"
+          label="Username"
+          placeholder="Enter your username"
+          required
+        />
+
+        <InputControl
+          name="email"
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          description="We'll never share your email with anyone else."
+          required
+        />
+
+        <InputControl
+          name="password"
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          required
+        />
+      </form>
+    </FormProvider>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type      | Default  | Description                              |
+| ------------- | --------- | -------- | ---------------------------------------- |
+| `name`        | `string`  | -        | The name of the form field (required)    |
+| `label`       | `string`  | -        | Label text for the input                 |
+| `description` | `string`  | -        | Helper text displayed below the input    |
+| `required`    | `boolean` | `false`  | Whether the field is required            |
+| `disabled`    | `boolean` | `false`  | Whether the input is disabled            |
+| `placeholder` | `string`  | -        | Placeholder text for the input           |
+| `type`        | `string`  | `'text'` | Input type (text, email, password, etc.) |
+
+## Examples
+
+### Basic Input
+
+```tsx
+<InputControl
+  name="firstName"
+  label="First Name"
+  placeholder="Enter your first name"
+/>
+```
+
+### Required Field
+
+```tsx
+<InputControl
+  name="email"
+  label="Email"
+  type="email"
+  placeholder="Enter your email"
+  required
+/>
+```
+
+### With Description
+
+```tsx
+<InputControl
+  name="username"
+  label="Username"
+  placeholder="Choose a username"
+  description="Username must be between 3-20 characters"
+  required
+/>
+```
+
+### Different Input Types
+
+```tsx
+{
+  /* Email Input */
+}
+<InputControl
+  name="email"
+  label="Email"
+  type="email"
+  placeholder="user@example.com"
+/>;
+
+{
+  /* Password Input */
+}
+<InputControl
+  name="password"
+  label="Password"
+  type="password"
+  placeholder="Enter your password"
+/>;
+
+{
+  /* URL Input */
+}
+<InputControl
+  name="website"
+  label="Website"
+  type="url"
+  placeholder="https://example.com"
+/>;
+```
+
+## Styling
+
+The component inherits styling from the base `Input` component and applies error states automatically when validation fails. Error messages are displayed below the input field.
+
+## Accessibility
+
+- Proper ARIA labels and descriptions
+- Error states are announced to screen readers
+- Keyboard navigation support
+- Focus management
