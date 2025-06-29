@@ -55,39 +55,6 @@
       ]
     },
     {
-      "name": "switch-control",
-      "type": "registry:component",
-      "title": "Switch Control",
-      "description": "A form switch control that can use either regular switch or switch with labels.",
-      "registryDependencies": [
-        "switch",
-        "switch-mod",
-        "label",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "src/registry/new-york/components/form-controls/switch-control.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "switch-mod",
-      "type": "registry:component",
-      "title": "Switch Mod",
-      "description": "A switch component with customizable labels for checked and unchecked states.",
-      "registryDependencies": [
-        "switch"
-      ],
-      "files": [
-        {
-          "path": "src/registry/new-york/components/ui/switch-mod.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "modern-style",
       "type": "registry:style",
       "title": "Modern Style",

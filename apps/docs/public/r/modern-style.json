@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "modern-style",
+  "type": "registry:style",
+  "title": "Modern Style",
+  "description": "A sleek, contemporary style with clean lines and modern aesthetics.",
+  "cssVars": {
+    "theme-modern": {
+      "background": "oklch(0.99 0.005 264)",
+      "foreground": "oklch(0.09 0.015 264)",
+      "card": "oklch(0.985 0.01 264)",
+      "card-foreground": "oklch(0.09 0.015 264)",
+      "popover": "oklch(0.985 0.01 264)",
+      "popover-foreground": "oklch(0.09 0.015 264)",
+      "primary": "oklch(0.46 0.18 264)",
+      "primary-foreground": "oklch(0.99 0.005 264)",
+      "secondary": "oklch(0.94 0.02 264)",
+      "secondary-foreground": "oklch(0.15 0.02 264)",
+      "muted": "oklch(0.94 0.02 264)",
+      "muted-foreground": "oklch(0.45 0.05 264)",
+      "accent": "oklch(0.7 0.14 200)",
+      "accent-foreground": "oklch(0.99 0.005 264)",
+      "destructive": "oklch(0.65 0.22 15)",
+      "border": "oklch(0.88 0.03 264)",
+      "input": "oklch(0.88 0.03 264)",
+      "ring": "oklch(0.46 0.18 264)"
+    },
+    "theme-modern.dark": {
+      "background": "oklch(0.03 0.02 264)",
+      "foreground": "oklch(0.95 0.01 264)",
+      "card": "oklch(0.06 0.03 264)",
+      "card-foreground": "oklch(0.95 0.01 264)",
+      "popover": "oklch(0.06 0.03 264)",
+      "popover-foreground": "oklch(0.95 0.01 264)",
+      "primary": "oklch(0.65 0.2 264)",
+      "primary-foreground": "oklch(0.03 0.02 264)",
+      "secondary": "oklch(0.12 0.04 264)",
+      "secondary-foreground": "oklch(0.95 0.01 264)",
+      "muted": "oklch(0.12 0.04 264)",
+      "muted-foreground": "oklch(0.65 0.05 264)",
+      "accent": "oklch(0.75 0.16 200)",
+      "accent-foreground": "oklch(0.03 0.02 264)",
+      "destructive": "oklch(0.7 0.24 15)",
+      "border": "oklch(0.18 0.06 264)",
+      "input": "oklch(0.18 0.06 264)",
+      "ring": "oklch(0.65 0.2 264)"
+    }
+  }
+}
